@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Manager Approval</h1>
+<div class="panel"><table>
+<tr><th>ID</th><th>Employee</th><th>Attainment</th><th>Incentive</th><th>Status</th><th>Action</th></tr>
+{% for r in rows %}
+<tr>
+<td>{{r.id}}</td><td>{{r.employee_name}}</td><td>{{r.attainment}}%</td>
+<td>₹{{"{:,.2f}".format(r.final_incentive)}}</td><td>{{r.status}}</td>
+<td>
+{% if r.status == 'PENDING' %}
+<form class="inline" method="post" action="/approval/{{r.id}}/approve"><button class="button">Approve</button></form>
+<form class="inline" method="post" action="/approval/{{r.id}}/reject"><button class="button danger">Reject</button></form>
+{% else %}—{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table></div>
+{% endblock %}

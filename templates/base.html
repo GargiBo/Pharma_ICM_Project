@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PharmaComp360</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+  <div class="brand">PharmaComp360</div>
+  <div class="navlinks">
+    <a href="/">Dashboard</a>
+    <a href="/employees">Employees</a>
+    <a href="/products">Products</a>
+    <a href="/approvals">Approvals</a>
+    <a href="/audit">Audit</a>
+  </div>
+</nav>
+<main>
+{% with messages = get_flashed_messages() %}
+  {% for message in messages %}<div class="flash">{{ message }}</div>{% endfor %}
+{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<footer>PharmaComp360 · Synthetic demo data · Life Sciences ICM portfolio project</footer>
+</body>
+</html>

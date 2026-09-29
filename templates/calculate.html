@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Compensation Calculation</h1>
+<div class="panel">
+<h2>{{r.employee_name}} · {{r.employee_id}}</h2>
+<p>{{r.role}} · {{r.region}} · {{r.territory}}</p>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Target</td><td>₹{{"{:,.2f}".format(r.target_amount)}}</td></tr>
+<tr><td>Actual Sales</td><td>₹{{"{:,.2f}".format(r.actual_sales)}}</td></tr>
+<tr><td>Attainment</td><td>{{r.attainment}}%</td></tr>
+<tr><td>Base Incentive</td><td>₹{{"{:,.2f}".format(r.base_incentive)}}</td></tr>
+<tr><td>Product Bonus</td><td>₹{{"{:,.2f}".format(r.product_bonus)}}</td></tr>
+<tr><td>Quality Bonus</td><td>₹{{"{:,.2f}".format(r.quality_bonus)}}</td></tr>
+<tr><td>Compliance Penalty</td><td>₹{{"{:,.2f}".format(r.compliance_penalty)}}</td></tr>
+<tr><td>Accelerator</td><td>{{r.accelerator}}x</td></tr>
+<tr class="total"><td>Final Incentive</td><td>₹{{"{:,.2f}".format(r.final_incentive)}}</td></tr>
+</table>
+<form method="post"><button class="button">Save for Approval</button></form>
+</div>
+{% endblock %}

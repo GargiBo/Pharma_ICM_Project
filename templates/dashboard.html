@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Incentive Compensation Dashboard</h1>
+<p class="muted">Life Sciences sales compensation overview</p>
+<div class="cards">
+  <div class="card"><span>Employees</span><strong>{{ stats.employees }}</strong></div>
+  <div class="card"><span>Total Sales</span><strong>₹{{ "{:,.0f}".format(stats.sales) }}</strong></div>
+  <div class="card"><span>Calculated Payout</span><strong>₹{{ "{:,.0f}".format(stats.payout) }}</strong></div>
+  <div class="card"><span>Avg. Attainment</span><strong>{{ "{:.1f}".format(stats.avg_attainment) }}%</strong></div>
+</div>
+<div class="grid">
+<section class="panel">
+<h2>Sales by Region</h2>
+<table><tr><th>Region</th><th>Sales</th></tr>
+{% for r in regions %}<tr><td>{{r.region}}</td><td>₹{{"{:,.0f}".format(r.sales)}}</td></tr>{% endfor %}
+</table>
+</section>
+<section class="panel">
+<h2>Recent Calculations</h2>
+<table><tr><th>Employee</th><th>Attainment</th><th>Final Incentive</th><th>Status</th></tr>
+{% for r in recent %}<tr><td>{{r.employee_name}}</td><td>{{r.attainment}}%</td><td>₹{{"{:,.0f}".format(r.final_incentive)}}</td><td><span class="status">{{r.status}}</span></td></tr>{% endfor %}
+</table>
+</section>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Audit Trail</h1>
+<div class="panel"><table>
+<tr><th>Time</th><th>Employee</th><th>Action</th><th>Old</th><th>New</th><th>Reason</th></tr>
+{% for r in rows %}
+<tr><td>{{r.created_at}}</td><td>{{r.employee_name or '—'}}</td><td>{{r.action}}</td><td>{{r.old_status}}</td><td>{{r.new_status}}</td><td>{{r.reason}}</td></tr>
+{% endfor %}
+</table></div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Product Portfolio</h1>
+<div class="panel"><table>
+<tr><th>Product</th><th>Therapeutic Area</th><th>Product Incentive</th></tr>
+{% for p in products %}
+<tr><td>{{p.product_name}}</td><td>{{p.category}}</td><td>{{p.incentive_rate*100}}%</td></tr>
+{% endfor %}
+</table></div>
+{% endblock %}
